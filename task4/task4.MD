@@ -1,5 +1,5 @@
 # Git
-* Git als Versionsverwaltung ist im Beruf essenteiell, wird aber leider oft beim Lernen vernachlässigt. Nicht aber in der Codersbay :wink:
+* Git als Versionsverwaltung ist im Beruf essentiell, wird aber leider oft beim Lernen vernachlässigt. Nicht aber in der Codersbay :wink:
 Deshalb sollst du dir auf Youtube Videos/Erklärungen dazu ansehen.
 
 * Hier wäre mein Vorschlag:
