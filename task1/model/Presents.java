@@ -2,13 +2,13 @@ package model;
 
 public class Presents {
 
-	public String presentName;
+	public String presentsName;
 	public Child childName;
 
 
-	public Presents(String presentName, Child childName) {
+	public Presents(String presentsName, Child childName) {
 
-		this.presentName = presentName;
+		this.presentsName = presentsName;
 		this.childName = childName;
 
 	}
@@ -16,7 +16,7 @@ public class Presents {
 	public Presents() {
 
 		this.childName = new Child();
-		this.presentName = "Super Christmas Lollipop";
+		this.presentsName = "Super Christmas Lollipop";
 
 	}
 

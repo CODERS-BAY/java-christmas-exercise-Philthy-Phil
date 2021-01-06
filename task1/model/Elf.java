@@ -2,35 +2,23 @@ package model;
 
 public class Elf {
 
-	public String fName;
-	public String lName;
-	public int age;
-	public String streetName;
-	public int postalCode;
-	public String city;
-	public String country;
+	public String elfName;
+	public int elfAge;
+	public String elfCity;
 
-	public Elf(String fName) {
+	public Elf(String elfName, int elfAge, String elfCity) {
 
-		this.fName = fName;
-		this.lName = "Santa's Henchman";
-		this.age = 200;
-		this.streetName = "Snow Street White 0";
-		this.postalCode = 99999999;
-		this.city = "Snowy White";
-		this.country = "Northpole";
+		this.elfName = elfName + "Santa's Henchman";
+		this.elfAge = 200;
+		this.elfCity = "Snowy White";
 
 	}
 
 	public Elf() {
 
-		this.fName = "Dullnose";
-		this.lName = "Santa's Henchman";
-		this.age = 200;
-		this.streetName = "Snow Street White 0";
-		this.postalCode = 99999999;
-		this.city = "Snowy White";
-		this.country = "Northpole";
+		this.elfName = "Dullnose Santa's Henchman";
+		this.elfAge = 200;
+		this.elfCity = "Snowy White";
 
 	}
 
