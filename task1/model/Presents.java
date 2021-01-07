@@ -3,21 +3,23 @@ package model;
 public class Presents {
 
 	public String presentsName;
-	public Child childName;
+	public Child child;
 
-
-	public Presents(String presentsName, Child childName) {
+	public Presents(String presentsName, Child child) {
 
 		this.presentsName = presentsName;
-		this.childName = childName;
+		this.child = child;
 
 	}
 
 	public Presents() {
 
-		this.childName = new Child();
 		this.presentsName = "Super Christmas Lollipop";
+		this.child = new Child();
 
 	}
+
+
+
 
 }

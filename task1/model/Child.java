@@ -6,9 +6,9 @@ public class Child {
 	public String childName;
 	public int childAge;
 	public String childCity;
-	public Presents presentsName;
+	public String presentsName;
 
-	public Child(int childID, String childName, int childAge, String childCity, Presents presentsName) {
+	public Child(int childID, String childName, int childAge, String childCity, String presentsName) {
 
 		this.childID = childID;
 		this.childName = childName;
@@ -24,14 +24,17 @@ public class Child {
 		this.childName = "Mickey Mouse";
 		this.childAge = 90;
 		this.childCity = "Disneyland";
-		this.presentsName = new Presents();
+		this.presentsName = "Lollipop";
 
 	}
 
 
 	public void printChildAdded() {
-		System.out.println("** new child added to santa's list: [ID] " + childID + " - [NAME] " + childName + " - [AGE] " + childAge +
-							"[presentWish] " + presentsName + "		**");
+		System.out.println("******************************************************************");
+		System.out.println();
+		System.out.println("** [system].added to santa's list: 								**");
+		System.out.println("** " + childID + " | " + childName + " | " + childAge + " | " + childCity + " | " + presentsName + " **");
+		System.out.println();
 	}
 
 }
