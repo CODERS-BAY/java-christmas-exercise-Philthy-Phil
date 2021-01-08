@@ -6,7 +6,7 @@ import model.Elf;
 import model.Presents;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Console extends ElfUtil {
@@ -123,11 +123,7 @@ public class Console extends ElfUtil {
 				System.out.println("******************************************************************");
 				System.out.println("** [system].sorting presents by country.						**");
 				System.out.println("******************************************************************");
-
-				//TODO sort list country
-
-				children = dialogElfSortingChildren(children);
-
+				dialogElfSortingChildren();
 				backToHome(usr);
 			}
 			case "3" -> {
@@ -157,27 +153,37 @@ public class Console extends ElfUtil {
 	}
 
 	// dialog elf sorting children
-	public ArrayList<Child> dialogElfSortingChildren(ArrayList<Child>children) {
+	public void dialogElfSortingChildren() {
 
+		System.out.println("**																**");
 		if (children.size() == 0) {
-			System.out.println("** [system].**");
+			System.out.println("** [system].there are no children registered so far!			**");
+			System.out.println("** [system].return later!										**");
+		} else if (shift.size() == 0) {
+			System.out.println("** [system].there are no elves here to do the sorting work!		**");
+			System.out.println("** [system]. check the registered elves! return later!			**");
+		} else {
+			System.out.println("** [system].registered children were sorted by their countries! **");
+			System.out.println("**  															**");
+			System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present]  		**");
+			System.out.println("**  															**");
+			elfSortingChildren(children);
+
+			for (int i = 0; i < children.size(); i++) {
+				System.out.println("** " + children.get(i).childID + " | " + children.get(i).childName + " | " +
+						children.get(i).childAge + " | " + children.get(i).childCity + " | " + children.get(i).presentsName + " **");
+			}
+
 		}
 
-		for (Child c : children) {
+		System.out.println("**																**");
 
-			// TODO
-
-		}
-
-
-		return children;
 	}
-
 
 	// dialog elf sledge load
 	public void dialogElvesSledgeUnload() {
 
-		sledgeStatus = super.elvesUnloadSledge(shift, sledgeStatus);
+		sledgeStatus = elvesUnloadSledge(shift, sledgeStatus);
 		if (sledgeStatus) {
 			System.out.println("**  															**");
 			System.out.println("** [system].sledge is now fully unloaded!				 		**");
@@ -195,7 +201,7 @@ public class Console extends ElfUtil {
 	// dialog elf sledge load
 	public void dialogElvesSledgeLoad() {
 
-		sledgeStatus = super.elvesLoadSledge(shift, sledgeStatus);
+		sledgeStatus = elvesLoadSledge(shift, sledgeStatus);
 		if (sledgeStatus) {
 			System.out.println("**  															**");
 			System.out.println("** [system].sledge is now fully loaded!					 		**");
@@ -292,7 +298,7 @@ public class Console extends ElfUtil {
 			System.out.println("** [system].looks like the vault is still empty! return later!	**");
 		} else {
 			System.out.println("**  															**");
-			System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present]  **");
+			System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present] 			**");
 			System.out.println("**  															**");
 			for (int i = 0; i < children.size(); i++) {
 				System.out.println("** " + children.get(i).childID + " | " + children.get(i).childName + " | " +

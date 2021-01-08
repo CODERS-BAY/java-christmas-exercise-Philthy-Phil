@@ -37,4 +37,7 @@ public class Child {
 		System.out.println("** 																**");
 	}
 
+	public String getChildCity() {
+		return childCity;
+	}
 }

@@ -1,8 +1,10 @@
 package controller;
 
+import model.Child;
 import model.Elf;
 import model.Presents;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ElfUtil {
 
@@ -26,14 +28,6 @@ public class ElfUtil {
 			case 3 -> elfTier = "Expert";
 		}
 		return elfTier;
-	}
-
-	// elf sorting presents
-	public ArrayList<Presents> elfSortVault(ArrayList<Presents> vault) {
-
-		// TODO sorting method here
-
-		return vault;
 	}
 
 	// elf loading sledge
@@ -67,6 +61,12 @@ public class ElfUtil {
 		} else {
 			return false;
 		}
+	}
+
+	// elf sorting children by city
+	public ArrayList<Child> elfSortingChildren(ArrayList<Child> children) {
+		children.sort(Comparator.comparing(Child::getChildCity));
+		return children;
 	}
 
 	/*
