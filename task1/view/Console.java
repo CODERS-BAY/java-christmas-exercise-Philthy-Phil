@@ -1,5 +1,6 @@
 package view;
 
+import controller.ElfUtil;
 import model.Child;
 import model.Elf;
 import model.Presents;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Console {
+public class Console extends ElfUtil {
 	/*
 	 * the console dialog comes here
 	 */
@@ -42,6 +43,7 @@ public class Console {
 			case "2" -> dialogElf(); 	// login as Elf
 			case "3" -> dialogChild();	// login as Child
 			default -> {
+				System.out.println("******************************************************************");
 				System.out.println("** [system].input is incorrect! please try again!				**");
 				System.out.println("******************************************************************");
 				dialogLoginScreen();
@@ -52,6 +54,7 @@ public class Console {
 
 	// display santa home-screen
 	public void dialogSanta() {
+
 		String usr = "santa";
 		System.out.println("******************************************************************");
 		System.out.println("** [system].HoHoHo Santa! what would you like to do?			**");
@@ -85,6 +88,7 @@ public class Console {
 				dialogLoginScreen();
 			}
 			default -> {
+				System.out.println("******************************************************************");
 				System.out.println("** [system].input is incorrect! please try again!				**");
 				System.out.println("******************************************************************");
 				dialogSanta();
@@ -94,6 +98,7 @@ public class Console {
 
 	// display elf home-screen
 	public void dialogElf() {
+
 		String usr = "elf";
 		System.out.println("******************************************************************");
 		System.out.println("** [system].HoHoHo my little elf! what would you like to do? 	**");
@@ -101,29 +106,49 @@ public class Console {
 		System.out.println("** [1].register in today's shift.								**");
 		System.out.println("** [2].sort presents by country.								**");
 		System.out.println("** [3].prepare loading the sledge.								**");
+		System.out.println("** [4].prepare unloading the sledge.							**");
 		System.out.println("** [x].logout / back to Login-Screen.							**");
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
 		switch (input) {
 			case "1" -> {
+				System.out.println("******************************************************************");
 				System.out.println("** [system].ok let's get some things done.						**");
 				System.out.println("******************************************************************");
 				dialogRegisterElfForShift();
 				backToHome(usr);
 			}
 			case "2" -> {
-				System.out.println("sort presents by country.");
+				System.out.println("******************************************************************");
+				System.out.println("** [system].sorting presents by country.						**");
+				System.out.println("******************************************************************");
+
+				//TODO sort list country
+
+				children = dialogElfSortingChildren(children);
+
 				backToHome(usr);
 			}
 			case "3" -> {
-				System.out.println("prepare loading the sledge.");
+				System.out.println("******************************************************************");
+				System.out.println("** [system].prepare loading the sledge.							**");
+				System.out.println("******************************************************************");
+				dialogElvesSledgeLoad();
+				backToHome(usr);
+			}
+			case "4" -> {
+				System.out.println("******************************************************************");
+				System.out.println("** [system].prepare unloading the sledge.						**");
+				System.out.println("******************************************************************");
+				dialogElvesSledgeUnload();
 				backToHome(usr);
 			}
 			case "x" -> {
 				dialogLoginScreen();
 			}
 			default -> {
+				System.out.println("******************************************************************");
 				System.out.println("** [system].input is incorrect! please try again!				**");
 				System.out.println("******************************************************************");
 				dialogElf();
@@ -131,8 +156,63 @@ public class Console {
 		}
 	}
 
+	// dialog elf sorting children
+	public ArrayList<Child> dialogElfSortingChildren(ArrayList<Child>children) {
+
+		if (children.size() == 0) {
+			System.out.println("** [system].**");
+		}
+
+		for (Child c : children) {
+
+			// TODO
+
+		}
+
+
+		return children;
+	}
+
+
+	// dialog elf sledge load
+	public void dialogElvesSledgeUnload() {
+
+		sledgeStatus = super.elvesUnloadSledge(shift, sledgeStatus);
+		if (sledgeStatus) {
+			System.out.println("**  															**");
+			System.out.println("** [system].sledge is now fully unloaded!				 		**");
+			sledgeStatus = false;
+		} else {
+			System.out.println("**  															**");
+			System.out.println("** [system].sledge is not unloaded! check working elves!		**");
+			System.out.println("**  															**");
+			System.out.println("** [system].too few elves have the tier to unload the sledge!	**");
+			System.out.println("** [system].get more high-tier elves working! come back later!	**");
+		}
+		System.out.println("**  															**");
+	}
+
+	// dialog elf sledge load
+	public void dialogElvesSledgeLoad() {
+
+		sledgeStatus = super.elvesLoadSledge(shift, sledgeStatus);
+		if (sledgeStatus) {
+			System.out.println("**  															**");
+			System.out.println("** [system].sledge is now fully loaded!					 		**");
+			sledgeStatus = true;
+		} else {
+			System.out.println("**  															**");
+			System.out.println("** [system].sledge is not loaded! check working elves!			**");
+			System.out.println("**  															**");
+			System.out.println("** [system].too few elves have the tier to load the sledge!		**");
+			System.out.println("** [system].get more high-tier elves working! come back later!	**");
+		}
+		System.out.println("**  															**");
+	}
+
 	// display child home-screen
 	public void dialogChild() {
+
 		String usr = "child";
 		System.out.println("******************************************************************");
 		System.out.println("** [system].Hello my dear! What do you want to do?				**");
@@ -145,6 +225,7 @@ public class Console {
 		String input = scanBot.nextLine().toLowerCase();
 		switch (input) {
 			case "1" -> {
+				System.out.println("******************************************************************");
 				System.out.println("** [system].ok let's get some things done.						**");
 				System.out.println("******************************************************************");
 				dialogRegisterChild();
@@ -159,6 +240,7 @@ public class Console {
 				dialogLoginScreen();
 			}
 			default -> {
+				System.out.println("******************************************************************");
 				System.out.println("** [system].input is incorrect! please try again!				**");
 				System.out.println("******************************************************************");
 				dialogChild();
@@ -169,8 +251,10 @@ public class Console {
 
 	//dialog register new child
 	public void dialogRegisterElfForShift() {
+
 		String usr = "elf";
 		int inputElfID = elfID++;
+
 		System.out.println("** [register].what's your name? [e.g. 'Donald'] 				**");
 		String inputElfName = scanBot.nextLine();
 
@@ -197,14 +281,17 @@ public class Console {
 
 	// dialog show all children inclusive their infos in vault
 	public void dialogShowSantaVaultItemsInclusiveInfos() {
+
 		String usr = "santa";
 		System.out.println("******************************************************************");
 		System.out.println("** [system].vault loading! here are all stored infos so far!	**");
+		System.out.println("******************************************************************");
 
 		if (children.size() == 0) {
 			System.out.println("**  															**");
 			System.out.println("** [system].looks like the vault is still empty! return later!	**");
 		} else {
+			System.out.println("**  															**");
 			System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present]  **");
 			System.out.println("**  															**");
 			for (int i = 0; i < children.size(); i++) {
@@ -217,9 +304,11 @@ public class Console {
 
 	// dialog show all working elves for today's shift
 	public void dialogShowSantaTodayShift() {
+
 		String usr = "santa";
 		System.out.println("******************************************************************");
 		System.out.println("** [system].shift loading! all stamped in elves for today.		**");
+		System.out.println("******************************************************************");
 
 		if (shift.size() == 0) {
 			System.out.println("**  															**");
@@ -237,9 +326,11 @@ public class Console {
 
 	// dialog show all presents in vault
 	public void dialogShowSantaVaultItems() {
+
 		String usr = "santa";
 		System.out.println("******************************************************************");
 		System.out.println("** [system].vault loading! here are all stored presents so far!	**");
+		System.out.println("******************************************************************");
 
 		if (children.size() == 0) {
 			System.out.println("**  															**");
@@ -258,6 +349,7 @@ public class Console {
 	public void dialogShowSantaSledgeStatus() {
 		System.out.println("******************************************************************");
 		System.out.println("** [system].sledge-status loading! 								**");
+		System.out.println("******************************************************************");
 		System.out.println("**  															**");
 		if (!sledgeStatus) {
 			System.out.println("** [system].looks like the sledge isn't still loaded yet! 		**");
@@ -272,6 +364,7 @@ public class Console {
 
 	//dialog register new child
 	public void dialogRegisterChild() {
+
 		String usr = "child";
 		int inputChildID = ID++;
 		System.out.println("** [register].what's your name? [e.g. 'Donald Duck']			**");
@@ -312,11 +405,11 @@ public class Console {
 			backToHome(usr);
 		}
 
-
 	}
 
 	// back to home-screen
 	public void backToHome(String usr) {
+
 		System.out.println("** [x].back to Home-Screen.										**");
 		System.out.println("******************************************************************");
 		String input = scanBot.nextLine().toLowerCase();

@@ -28,13 +28,13 @@ public class Child {
 
 	}
 
-
 	public void printChildAdded() {
 		System.out.println("******************************************************************");
-		System.out.println();
 		System.out.println("** [system].added to santa's list: 								**");
+		System.out.println("******************************************************************");
+		System.out.println("** 																**");
 		System.out.println("** " + childID + " | " + childName + " | " + childAge + " | " + childCity + " | " + presentsName + " **");
-		System.out.println();
+		System.out.println("** 																**");
 	}
 
 }

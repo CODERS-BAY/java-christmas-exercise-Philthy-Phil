@@ -31,11 +31,11 @@ public class Elf extends ElfUtil {
 
 	public void printElfAdded() {
 		System.out.println("******************************************************************");
-		System.out.println();
 		System.out.println("** [system].stamped in to today's shift:						**");
+		System.out.println("******************************************************************");
+		System.out.println("** 																**");
 		System.out.println("** " + elfID + " | " + elfName + " | " + elfTier + " | " + elfAge + " | " + elfCity + " **");
-		System.out.println();
+		System.out.println("** 																**");
 	}
-
 
 }

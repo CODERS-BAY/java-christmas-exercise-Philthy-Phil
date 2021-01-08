@@ -1,7 +1,7 @@
 package controller;
 
+import model.Elf;
 import model.Presents;
-
 import java.util.ArrayList;
 
 public class ElfUtil {
@@ -10,15 +10,14 @@ public class ElfUtil {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	// elf age ->
 	public int elfSetRandomAge() {
 		return (int)(Math.random() * 1000 + 100);
 	}
 
-
 	// elf tier -> novice / apprentice / expert
 	public String elfSetRandomTier() {
+
 		String elfTier = "";
 		int coinFlip = (int)(Math.random() * 3 + 1);
 		switch(coinFlip) {
@@ -34,10 +33,41 @@ public class ElfUtil {
 
 		// TODO sorting method here
 
-
 		return vault;
 	}
 
+	// elf loading sledge
+	public boolean elvesLoadSledge(ArrayList<Elf>shift, boolean sledgeStatus) {
+
+		int trueLoaders = 0;
+		for (int i = 0; i < shift.size(); i++) {
+			if (shift.get(i).elfTier.equals("Apprentice") || shift.get(i).elfTier.equals("Expert")) {
+				trueLoaders++;
+			}
+		}
+		if (trueLoaders >= 2 && !sledgeStatus) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// elf unloading sledge
+	public boolean elvesUnloadSledge(ArrayList<Elf>shift, boolean sledgeStatus) {
+
+		int trueLoaders = 0;
+		for (int i = 0; i < shift.size(); i++) {
+			if (shift.get(i).elfTier.equals("Apprentice") || shift.get(i).elfTier.equals("Expert")) {
+				trueLoaders++;
+			}
+		}
+
+		if (trueLoaders >= 2 && sledgeStatus) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	/*
 	 * sledge should be prepared here
