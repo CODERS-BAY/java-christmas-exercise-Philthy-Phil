@@ -1,5 +1,9 @@
 package controller;
 
+import model.Presents;
+
+import java.util.ArrayList;
+
 public class ElfUtil {
 
 	public ElfUtil() {
@@ -23,6 +27,15 @@ public class ElfUtil {
 			case 3 -> elfTier = "Expert";
 		}
 		return elfTier;
+	}
+
+	// elf sorting presents
+	public ArrayList<Presents> elfSortVault(ArrayList<Presents> vault) {
+
+		// TODO sorting method here
+
+
+		return vault;
 	}
 
 
