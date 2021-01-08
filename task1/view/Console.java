@@ -177,7 +177,7 @@ public class Console {
 		System.out.println("**  															**");
 	}
 
-	// dialog show all children inclusive their infos and presents in vault
+	// dialog show all presents in vault
 	public void dialogShowSantaVaultItems() {
 		String usr = "santa";
 		System.out.println("******************************************************************");
@@ -203,7 +203,7 @@ public class Console {
 		System.out.println("**  															**");
 		if (!sledgeStatus) {
 			System.out.println("** [system].looks like the sledge isn't still loaded yet! 		**");
-			System.out.println("** [system].kick some elves asses!								**");
+			System.out.println("** [system].kick some elves asses! and come back later!			**");
 		} else {
 			System.out.println("** [system].HoHoHo santa!										**");
 			System.out.println("** [system].sledge is loaded and ready for take off!			**");

@@ -1,6 +1,8 @@
 package model;
 
-public class Elf {
+import controller.ElfUtil;
+
+public class Elf extends ElfUtil {
 
 	public String elfName;
 	public int elfAge;
