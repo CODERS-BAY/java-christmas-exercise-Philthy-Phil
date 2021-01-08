@@ -1,6 +1,7 @@
 package view;
 
 import model.Child;
+import model.Elf;
 import model.Presents;
 
 import java.util.ArrayList;
@@ -13,10 +14,12 @@ public class Console {
 	 */
 	public Scanner scanBot = new Scanner(System.in);
 	public int ID = 1;
+	public int elfID = 1;
 	public boolean sledgeStatus = false;
 
 	ArrayList<Child> children = new ArrayList<>();
 	ArrayList<Presents> vault = new ArrayList<>();
+	ArrayList<Elf> shift = new ArrayList<>();
 
 	// display login screen
 	public void dialogLoginScreen() {
@@ -56,6 +59,7 @@ public class Console {
 		System.out.println("** [1].list all presents stored in xmas-vault.					**");
 		System.out.println("** [2].list all children & their wishes.						**");
 		System.out.println("** [3].check sledge-load-status.								**");
+		System.out.println("** [4].list all working elves for today's shift.				**");
 		System.out.println("** [x].logout / back to Login-Screen.							**");
 		System.out.println("******************************************************************");
 
@@ -71,6 +75,10 @@ public class Console {
 			}
 			case "3" -> {
 				dialogShowSantaSledgeStatus();
+				backToHome(usr);
+			}
+			case "4" -> {
+				dialogShowSantaTodayShift();
 				backToHome(usr);
 			}
 			case "x" -> {
@@ -90,24 +98,26 @@ public class Console {
 		System.out.println("******************************************************************");
 		System.out.println("** [system].HoHoHo my little elf! what would you like to do? 	**");
 		System.out.println("******************************************************************");
-		System.out.println("** [1].some fancy stuff.										**");
-		System.out.println("** [2].some really fancy stuff.									**");
-		System.out.println("** [3].active sledge-load.										**");
+		System.out.println("** [1].register in today's shift.								**");
+		System.out.println("** [2].sort presents by country.								**");
+		System.out.println("** [3].prepare loading the sledge.								**");
 		System.out.println("** [x].logout / back to Login-Screen.							**");
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
 		switch (input) {
 			case "1" -> {
-				System.out.println("some fancy stuff.");
+				System.out.println("** [system].ok let's get some things done.						**");
+				System.out.println("******************************************************************");
+				dialogRegisterElfForShift();
 				backToHome(usr);
 			}
 			case "2" -> {
-				System.out.println("some really fancy stuff.");
+				System.out.println("sort presents by country.");
 				backToHome(usr);
 			}
 			case "3" -> {
-				System.out.println("active sledge-load.");
+				System.out.println("prepare loading the sledge.");
 				backToHome(usr);
 			}
 			case "x" -> {
@@ -157,6 +167,34 @@ public class Console {
 
 	}
 
+	//dialog register new child
+	public void dialogRegisterElfForShift() {
+		String usr = "elf";
+		int inputElfID = elfID++;
+		System.out.println("** [register].what's your name? [e.g. 'Donald'] 				**");
+		String inputElfName = scanBot.nextLine();
+
+		System.out.println("** [register].great job! you stamped in for today's shift.		**");
+		Elf elf = new Elf(inputElfID, inputElfName);
+
+		elf.printElfAdded();
+		shift.add(elf);
+
+		System.out.println("******************************************************************");
+		System.out.println("** [system].stamp in another elf? [y].for yes [x].stop adding	**");
+		String inputOneMore = scanBot.nextLine().toLowerCase();
+
+		if (inputOneMore.equals("y")) {
+			System.out.println("** [system].ok let's get some things done first.				**");
+			System.out.println("******************************************************************");
+			dialogRegisterElfForShift();
+			backToHome(usr);
+		}
+		else if (inputOneMore.equals("x")) {
+			backToHome(usr);
+		}
+	}
+
 	// dialog show all children inclusive their infos in vault
 	public void dialogShowSantaVaultItemsInclusiveInfos() {
 		String usr = "santa";
@@ -172,6 +210,26 @@ public class Console {
 			for (int i = 0; i < children.size(); i++) {
 				System.out.println("** " + children.get(i).childID + " | " + children.get(i).childName + " | " +
 						children.get(i).childAge + " | " + children.get(i).childCity + " | " + children.get(i).presentsName + " **");
+			}
+		}
+		System.out.println("**  															**");
+	}
+
+	// dialog show all working elves for today's shift
+	public void dialogShowSantaTodayShift() {
+		String usr = "santa";
+		System.out.println("******************************************************************");
+		System.out.println("** [system].shift loading! all stamped in elves for today.		**");
+
+		if (shift.size() == 0) {
+			System.out.println("**  															**");
+			System.out.println("** [system].there are no working elves today yet! return later!	**");
+		} else {
+			System.out.println("** [system].[ID] | [Name] | [Tier] | [Age] | [City]				**");
+			System.out.println("**  															**");
+			for (int i = 0; i < shift.size(); i++) {
+				System.out.println("** " + shift.get(i).elfID + " | " + shift.get(i).elfName + " | " +
+						shift.get(i).elfTier + " | " + shift.get(i).elfAge + " | " + shift.get(i).elfCity + " **");
 			}
 		}
 		System.out.println("**  															**");
