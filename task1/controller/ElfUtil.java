@@ -2,7 +2,7 @@ package controller;
 
 import model.Child;
 import model.Elf;
-import model.Presents;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -64,9 +64,8 @@ public class ElfUtil {
 	}
 
 	// elf sorting children by city
-	public ArrayList<Child> elfSortingChildren(ArrayList<Child> children) {
+	public void elfSortingChildren(ArrayList<Child> children) {
 		children.sort(Comparator.comparing(Child::getChildCity));
-		return children;
 	}
 
 	/*

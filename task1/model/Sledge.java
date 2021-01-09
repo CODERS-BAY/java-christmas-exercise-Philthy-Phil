@@ -2,8 +2,12 @@ package model;
 // Sledge = Schlitten
 public class Sledge {
 
+	public boolean status;
+
 	public Sledge() {
-		// TODO Auto-generated constructor stub
+
+		this.status = false;
+
 	}
 
 }

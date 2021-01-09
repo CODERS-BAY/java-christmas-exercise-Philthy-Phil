@@ -4,6 +4,7 @@ import controller.ElfUtil;
 import model.Child;
 import model.Elf;
 import model.Presents;
+import model.Sledge;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,7 +17,7 @@ public class Console extends ElfUtil {
 	public Scanner scanBot = new Scanner(System.in);
 	public int ID = 1;
 	public int elfID = 1;
-	public boolean sledgeStatus = false;
+	public Sledge sledge = new Sledge();
 
 	ArrayList<Child> children = new ArrayList<>();
 	ArrayList<Presents> vault = new ArrayList<>();
@@ -183,11 +184,11 @@ public class Console extends ElfUtil {
 	// dialog elf sledge load
 	public void dialogElvesSledgeUnload() {
 
-		sledgeStatus = elvesUnloadSledge(shift, sledgeStatus);
-		if (sledgeStatus) {
+		sledge.status = elvesUnloadSledge(shift, sledge.status);
+		if (sledge.status) {
 			System.out.println("**  															**");
 			System.out.println("** [system].sledge is now fully unloaded!				 		**");
-			sledgeStatus = false;
+			sledge.status = false;
 		} else {
 			System.out.println("**  															**");
 			System.out.println("** [system].sledge is not unloaded! check working elves!		**");
@@ -201,11 +202,11 @@ public class Console extends ElfUtil {
 	// dialog elf sledge load
 	public void dialogElvesSledgeLoad() {
 
-		sledgeStatus = elvesLoadSledge(shift, sledgeStatus);
-		if (sledgeStatus) {
+		sledge.status = elvesLoadSledge(shift, sledge.status);
+		if (sledge.status) {
 			System.out.println("**  															**");
 			System.out.println("** [system].sledge is now fully loaded!					 		**");
-			sledgeStatus = true;
+			sledge.status = true;
 		} else {
 			System.out.println("**  															**");
 			System.out.println("** [system].sledge is not loaded! check working elves!			**");
@@ -357,7 +358,7 @@ public class Console extends ElfUtil {
 		System.out.println("** [system].sledge-status loading! 								**");
 		System.out.println("******************************************************************");
 		System.out.println("**  															**");
-		if (!sledgeStatus) {
+		if (!sledge.status) {
 			System.out.println("** [system].looks like the sledge isn't still loaded yet! 		**");
 			System.out.println("** [system].kick some elves asses! and come back later!			**");
 		} else {
