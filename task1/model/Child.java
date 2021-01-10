@@ -40,4 +40,7 @@ public class Child {
 	public String getChildCity() {
 		return childCity;
 	}
+	public String getChildName() {
+		return childName;
+	}
 }

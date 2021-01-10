@@ -7,13 +7,10 @@ import model.Presents;
 import model.Sledge;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Console extends ElfUtil {
-	/*
-	 * the console dialog comes here
-	 */
+
 	public Scanner scanBot = new Scanner(System.in);
 	public int ID = 1;
 	public int elfID = 1;
@@ -64,6 +61,7 @@ public class Console extends ElfUtil {
 		System.out.println("** [2].list all children & their wishes.						**");
 		System.out.println("** [3].check sledge-load-status.								**");
 		System.out.println("** [4].list all working elves for today's shift.				**");
+		System.out.println("** [5].search for a specific child-name.						**");
 		System.out.println("** [x].logout / back to Login-Screen.							**");
 		System.out.println("******************************************************************");
 
@@ -83,6 +81,10 @@ public class Console extends ElfUtil {
 			}
 			case "4" -> {
 				dialogShowSantaTodayShift();
+				backToHome(usr);
+			}
+			case "5" -> {
+				dialogShowSantaSearchChild();
 				backToHome(usr);
 			}
 			case "x" -> {
@@ -170,9 +172,9 @@ public class Console extends ElfUtil {
 			System.out.println("**  															**");
 			elfSortingChildren(children);
 
-			for (int i = 0; i < children.size(); i++) {
-				System.out.println("** " + children.get(i).childID + " | " + children.get(i).childName + " | " +
-						children.get(i).childAge + " | " + children.get(i).childCity + " | " + children.get(i).presentsName + " **");
+			for (Child child : children) {
+				System.out.println("** " + child.childID + " | " + child.childName + " | " +
+						child.childAge + " | " + child.childCity + " | " + child.presentsName + " **");
 			}
 
 		}
@@ -301,14 +303,72 @@ public class Console extends ElfUtil {
 			System.out.println("**  															**");
 			System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present] 			**");
 			System.out.println("**  															**");
-			for (int i = 0; i < children.size(); i++) {
-				System.out.println("** " + children.get(i).childID + " | " + children.get(i).childName + " | " +
-						children.get(i).childAge + " | " + children.get(i).childCity + " | " + children.get(i).presentsName + " **");
+			for (Child child : children) {
+				System.out.println("** " + child.childID + " | " + child.childName + " | " +
+						child.childAge + " | " + child.childCity + " | " + child.presentsName + " **");
 			}
 		}
 		System.out.println("**  															**");
 	}
 
+	// dialog show sante child by searched name
+	public void dialogShowSantaSearchChild() {
+
+		String usr = "santa";
+		System.out.println("******************************************************************");
+		System.out.println("** [system].search module loading! 								**");
+		System.out.println("******************************************************************");
+
+		System.out.println("**  															**");
+		System.out.println("** [search].how's the name of the child you're looking for?		**");
+		String inputSearchChildName = scanBot.nextLine().toLowerCase();
+
+		if (children.size() == 0) {
+			System.out.println("**  															**");
+			System.out.println("** [search].sorry there isn't any child registered yet!			**");
+			System.out.println("** [search].return later!										**");
+			System.out.println("**  															**");
+		} else {
+			boolean search = false;
+			for (Child child : children) {
+
+				if (child.getChildName().equalsIgnoreCase(inputSearchChildName)) {
+					search = true;
+					System.out.println("** 																**");
+					System.out.println("** [system].found following child listed below.					**");
+					System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present] 			**");
+					System.out.println("** 																**");
+					System.out.println("** " + child.childID + " | " + child.childName + " | " +
+							child.childAge + " | " + child.childCity + " | " + child.presentsName + " **");
+					System.out.println("** 																**");
+					break;
+				}
+
+			}
+
+			if (!search) {
+				System.out.println("**  															**");
+				System.out.println("** [search].sorry there isn't any child with this name!			**");
+				System.out.println("**  															**");
+			}
+		}
+
+		System.out.println("******************************************************************");
+		System.out.println("** [system].do another search? [y].for yes [x].stop adding		**");
+		String inputOneMore = scanBot.nextLine().toLowerCase();
+
+		if (inputOneMore.equals("y")) {
+			dialogShowSantaSearchChild();
+			backToHome(usr);
+		}
+		else if (inputOneMore.equals("x")) {
+			backToHome(usr);
+		}
+
+		System.out.println("**  															**");
+		
+	}
+	
 	// dialog show all working elves for today's shift
 	public void dialogShowSantaTodayShift() {
 
@@ -323,9 +383,9 @@ public class Console extends ElfUtil {
 		} else {
 			System.out.println("** [system].[ID] | [Name] | [Tier] | [Age] | [City]				**");
 			System.out.println("**  															**");
-			for (int i = 0; i < shift.size(); i++) {
-				System.out.println("** " + shift.get(i).elfID + " | " + shift.get(i).elfName + " | " +
-						shift.get(i).elfTier + " | " + shift.get(i).elfAge + " | " + shift.get(i).elfCity + " **");
+			for (Elf elf : shift) {
+				System.out.println("** " + elf.elfID + " | " + elf.elfName + " | " +
+						elf.elfTier + " | " + elf.elfAge + " | " + elf.elfCity + " **");
 			}
 		}
 		System.out.println("**  															**");
@@ -345,8 +405,8 @@ public class Console extends ElfUtil {
 		} else {
 			System.out.println("** [system]. listed [presentName] 								**");
 			System.out.println("**  															**");
-			for (int i = 0; i < children.size(); i++) {
-				System.out.println("** [slot] presentsName = " + children.get(i).presentsName + "  **");
+			for (Child child : children) {
+				System.out.println("** [slot] presentsName = " + child.presentsName + "  **");
 			}
 		}
 		System.out.println("**  															**");
