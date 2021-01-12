@@ -41,9 +41,7 @@ public class Console extends ElfUtil {
 			case "2" -> dialogElf(); 	// login as Elf
 			case "3" -> dialogChild();	// login as Child
 			default -> {
-				System.out.println("******************************************************************");
-				System.out.println("** [system].input is incorrect! please try again!				**");
-				System.out.println("******************************************************************");
+				dialogError();
 				dialogLoginScreen();
 			}
 		}
@@ -91,9 +89,7 @@ public class Console extends ElfUtil {
 				dialogLoginScreen();
 			}
 			default -> {
-				System.out.println("******************************************************************");
-				System.out.println("** [system].input is incorrect! please try again!				**");
-				System.out.println("******************************************************************");
+				dialogError();
 				dialogSanta();
 			}
 		}
@@ -147,9 +143,7 @@ public class Console extends ElfUtil {
 				dialogLoginScreen();
 			}
 			default -> {
-				System.out.println("******************************************************************");
-				System.out.println("** [system].input is incorrect! please try again!				**");
-				System.out.println("******************************************************************");
+				dialogError();
 				dialogElf();
 			}
 		}
@@ -249,9 +243,7 @@ public class Console extends ElfUtil {
 				dialogLoginScreen();
 			}
 			default -> {
-				System.out.println("******************************************************************");
-				System.out.println("** [system].input is incorrect! please try again!				**");
-				System.out.println("******************************************************************");
+				dialogError();
 				dialogChild();
 			}
 		}
@@ -491,6 +483,13 @@ public class Console extends ElfUtil {
 			System.out.println("******************************************************************");
 			backToHome(usr);
 		}
+	}
+
+	// error statement
+	public void dialogError() {
+		System.out.println("******************************************************************");
+		System.out.println("** [system].input is incorrect! please try again!				**");
+		System.out.println("******************************************************************");
 	}
 
 }
