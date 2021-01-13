@@ -5,6 +5,7 @@ import model.Elf;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class ElfUtil {
 
@@ -31,11 +32,11 @@ public class ElfUtil {
 	}
 
 	// elf loading sledge
-	public boolean elvesLoadSledge(ArrayList<Elf>shift, boolean sledgeStatus) {
+	public boolean elvesLoadSledge(List<Elf> shift, boolean sledgeStatus) {
 
 		int trueLoaders = 0;
-		for (int i = 0; i < shift.size(); i++) {
-			if (shift.get(i).elfTier.equals("Apprentice") || shift.get(i).elfTier.equals("Expert")) {
+		for (Elf elf : shift) {
+			if (elf.elfTier.equals("Apprentice") || elf.elfTier.equals("Expert")) {
 				trueLoaders++;
 			}
 		}
@@ -47,11 +48,11 @@ public class ElfUtil {
 	}
 
 	// elf unloading sledge
-	public boolean elvesUnloadSledge(ArrayList<Elf>shift, boolean sledgeStatus) {
+	public boolean elvesUnloadSledge(List<Elf>shift, boolean sledgeStatus) {
 
 		int trueLoaders = 0;
-		for (int i = 0; i < shift.size(); i++) {
-			if (shift.get(i).elfTier.equals("Apprentice") || shift.get(i).elfTier.equals("Expert")) {
+		for (Elf elf : shift) {
+			if (elf.elfTier.equals("Apprentice") || elf.elfTier.equals("Expert")) {
 				trueLoaders++;
 			}
 		}
@@ -64,7 +65,7 @@ public class ElfUtil {
 	}
 
 	// elf sorting children by city
-	public void elfSortingChildren(ArrayList<Child> children) {
+	public void elfSortingChildren(List<Child> children) {
 		children.sort(Comparator.comparing(Child::getChildCity));
 	}
 

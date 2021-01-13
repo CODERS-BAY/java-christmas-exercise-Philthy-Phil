@@ -7,6 +7,7 @@ import model.Presents;
 import model.Sledge;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Console extends ElfUtil {
@@ -16,9 +17,9 @@ public class Console extends ElfUtil {
 	public int elfID = 1;
 	public Sledge sledge = new Sledge();
 
-	ArrayList<Child> children = new ArrayList<>();
-	ArrayList<Presents> vault = new ArrayList<>();
-	ArrayList<Elf> shift = new ArrayList<>();
+	List<Child> children = new ArrayList<>();
+	List<Presents> vault = new ArrayList<>();
+	List<Elf> shift = new ArrayList<>();
 
 	// display login screen
 	public void dialogLoginScreen() {
