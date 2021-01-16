@@ -40,11 +40,7 @@ public class ElfUtil {
 				trueLoaders++;
 			}
 		}
-		if (trueLoaders >= 2 && !sledgeStatus) {
-			return true;
-		} else {
-			return false;
-		}
+		return trueLoaders >= 2 && !sledgeStatus;
 	}
 
 	// elf unloading sledge
@@ -57,11 +53,7 @@ public class ElfUtil {
 			}
 		}
 
-		if (trueLoaders >= 2 && sledgeStatus) {
-			return true;
-		} else {
-			return false;
-		}
+		return trueLoaders >= 2 && sledgeStatus;
 	}
 
 	// elf sorting children by city

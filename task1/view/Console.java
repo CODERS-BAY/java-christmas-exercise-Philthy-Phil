@@ -16,6 +16,7 @@ public class Console extends ElfUtil {
 	public int ID = 1;
 	public int elfID = 1;
 	public Sledge sledge = new Sledge();
+	final String signs = "******************************************************************";
 
 	List<Child> children = new ArrayList<>();
 	List<Presents> vault = new ArrayList<>();
@@ -154,10 +155,10 @@ public class Console extends ElfUtil {
 	public void dialogElfSortingChildren() {
 
 		System.out.println("**																**");
-		if (children.size() == 0) {
+		if (children.isEmpty()) {
 			System.out.println("** [system].there are no children registered so far!			**");
 			System.out.println("** [system].return later!										**");
-		} else if (shift.size() == 0) {
+		} else if (shift.isEmpty()) {
 			System.out.println("** [system].there are no elves here to do the sorting work!		**");
 			System.out.println("** [system]. check the registered elves! return later!			**");
 		} else {
@@ -222,7 +223,6 @@ public class Console extends ElfUtil {
 		System.out.println("** [system].Hello my dear! What do you want to do?				**");
 		System.out.println("******************************************************************");
 		System.out.println("** [1].register in santa's list as a new child?					**");
-//		System.out.println("** [2].change your details in santa's list?	(ID needed) 		**");
 		System.out.println("** [x].logout / back to Login-Screen.							**");
 		System.out.println("******************************************************************");
 
@@ -235,11 +235,6 @@ public class Console extends ElfUtil {
 				dialogRegisterChild();
 				backToHome(usr);
 			}
-//			case "2" -> {
-//				System.out.println("** [update] ok let's search your ID?							**");
-//				System.out.println("******************************************************************");
-//				backToHome(usr);
-//			}
 			case "x" -> {
 				dialogLoginScreen();
 			}
@@ -289,7 +284,7 @@ public class Console extends ElfUtil {
 		System.out.println("** [system].vault loading! here are all stored infos so far!	**");
 		System.out.println("******************************************************************");
 
-		if (children.size() == 0) {
+		if (children.isEmpty()) {
 			System.out.println("**  															**");
 			System.out.println("** [system].looks like the vault is still empty! return later!	**");
 		} else {
@@ -316,7 +311,7 @@ public class Console extends ElfUtil {
 		System.out.println("** [search].how's the name of the child you're looking for?		**");
 		String inputSearchChildName = scanBot.nextLine().toLowerCase();
 
-		if (children.size() == 0) {
+		if (children.isEmpty()) {
 			System.out.println("**  															**");
 			System.out.println("** [search].sorry there isn't any child registered yet!			**");
 			System.out.println("** [search].return later!										**");
@@ -370,7 +365,7 @@ public class Console extends ElfUtil {
 		System.out.println("** [system].shift loading! all stamped in elves for today.		**");
 		System.out.println("******************************************************************");
 
-		if (shift.size() == 0) {
+		if (shift.isEmpty()) {
 			System.out.println("**  															**");
 			System.out.println("** [system].there are no working elves today yet! return later!	**");
 		} else {
@@ -392,7 +387,7 @@ public class Console extends ElfUtil {
 		System.out.println("** [system].vault loading! here are all stored presents so far!	**");
 		System.out.println("******************************************************************");
 
-		if (children.size() == 0) {
+		if (children.isEmpty()) {
 			System.out.println("**  															**");
 			System.out.println("** [system].looks like the vault is still empty! return later!	**");
 		} else {
@@ -478,6 +473,10 @@ public class Console extends ElfUtil {
 				case "santa" -> dialogSanta();
 				case "elf" -> dialogElf();
 				case "child" -> dialogChild();
+				default -> {
+					dialogError();
+					backToHome(usr);
+				}
 			}
 		} else {
 			System.out.println("** input is incorrect! please try again!						**");
