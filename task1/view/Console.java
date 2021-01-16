@@ -12,11 +12,10 @@ import java.util.Scanner;
 
 public class Console extends ElfUtil {
 
-	public Scanner scanBot = new Scanner(System.in);
+	public static final Scanner scanBot = new Scanner(System.in);
 	public int ID = 1;
 	public int elfID = 1;
 	public Sledge sledge = new Sledge();
-	final String signs = "******************************************************************";
 
 	List<Child> children = new ArrayList<>();
 	List<Presents> vault = new ArrayList<>();
@@ -38,6 +37,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
+		// new java switch expression // java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> dialogSanta();	// login as Santa
 			case "2" -> dialogElf(); 	// login as Elf
@@ -66,6 +66,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
+		// new java switch expression // java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> {
 				dialogShowSantaVaultItems();
@@ -112,6 +113,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
+		// new java switch expression // java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> {
 				System.out.println("******************************************************************");
@@ -169,8 +171,8 @@ public class Console extends ElfUtil {
 			elfSortingChildren(children);
 
 			for (Child child : children) {
-				System.out.println("** " + child.childID + " | " + child.childName + " | " +
-						child.childAge + " | " + child.childCity + " | " + child.presentsName + " **");
+				System.out.println("** " + child.getChildID() + " | " + child.getChildName() + " | " +
+						child.getChildAge() + " | " + child.getChildCity() + " | " + child.getPresentsName() + " **");
 			}
 
 		}
@@ -227,6 +229,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine().toLowerCase();
+		// new java switch expression // java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> {
 				System.out.println("******************************************************************");
@@ -292,8 +295,8 @@ public class Console extends ElfUtil {
 			System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present] 			**");
 			System.out.println("**  															**");
 			for (Child child : children) {
-				System.out.println("** " + child.childID + " | " + child.childName + " | " +
-						child.childAge + " | " + child.childCity + " | " + child.presentsName + " **");
+				System.out.println("** " + child.getChildID() + " | " + child.getChildName() + " | " +
+						child.getChildAge() + " | " + child.getChildCity() + " | " + child.getPresentsName() + " **");
 			}
 		}
 		System.out.println("**  															**");
@@ -326,8 +329,8 @@ public class Console extends ElfUtil {
 					System.out.println("** [system].found following child listed below.					**");
 					System.out.println("** [system].[ID] | [Name] | [Age] | [City] | [Present] 			**");
 					System.out.println("** 																**");
-					System.out.println("** " + child.childID + " | " + child.childName + " | " +
-							child.childAge + " | " + child.childCity + " | " + child.presentsName + " **");
+					System.out.println("** " + child.getChildID() + " | " + child.getChildName() + " | " +
+							child.getChildAge() + " | " + child.getChildCity() + " | " + child.getPresentsName() + " **");
 					System.out.println("** 																**");
 					break;
 				}
@@ -372,8 +375,8 @@ public class Console extends ElfUtil {
 			System.out.println("** [system].[ID] | [Name] | [Tier] | [Age] | [City]				**");
 			System.out.println("**  															**");
 			for (Elf elf : shift) {
-				System.out.println("** " + elf.elfID + " | " + elf.elfName + " | " +
-						elf.elfTier + " | " + elf.elfAge + " | " + elf.elfCity + " **");
+				System.out.println("** " + elf.getElfID() + " | " + elf.getElfName() + " | " +
+						elf.getElfTier() + " | " + elf.getElfAge() + " | " + elf.getElfCity() + " **");
 			}
 		}
 		System.out.println("**  															**");
@@ -394,7 +397,7 @@ public class Console extends ElfUtil {
 			System.out.println("** [system]. listed [presentName] 								**");
 			System.out.println("**  															**");
 			for (Child child : children) {
-				System.out.println("** [slot] presentsName = " + child.presentsName + "  **");
+				System.out.println("** [slot] presentsName = " + child.getPresentsName() + "  **");
 			}
 		}
 		System.out.println("**  															**");
@@ -469,6 +472,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 		String input = scanBot.nextLine().toLowerCase();
 		if(input.equals("x")) {
+			// new java switch expression // java switch statement = case 1 : do-someting; break;
 			switch (usr) {
 				case "santa" -> dialogSanta();
 				case "elf" -> dialogElf();

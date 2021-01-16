@@ -2,8 +2,8 @@ package model;
 
 public class Presents {
 
-	public String presentsName;
-	public Child child;
+	private final String presentsName;
+	private final Child child;
 
 	public Presents(String presentsName, Child child) {
 
@@ -12,11 +12,11 @@ public class Presents {
 
 	}
 
-	public Presents() {
-
-		this.presentsName = "Super Christmas Lollipop";
-		this.child = new Child();
-
+	public String getPresentsName() {
+		return presentsName;
 	}
 
+	public Child getChild() {
+		return child;
+	}
 }

@@ -2,31 +2,35 @@ package controller;
 
 import model.Child;
 import model.Elf;
-
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 public class ElfUtil {
 
-	public ElfUtil() {
-		// TODO Auto-generated constructor stub
-	}
+	private static final String tierT1 = "Novice";
+	private static final String tierT2 = "Apprentice";
+	private static final String tierT3 = "Expert";
+	private static final String tierT4 = "Bloody Noob";
 
 	// elf age ->
 	public int elfSetRandomAge() {
-		return (int)(Math.random() * 1000 + 100);
+
+		return new Random().nextInt(1001) + 100;
+
 	}
 
 	// elf tier -> novice / apprentice / expert
 	public String elfSetRandomTier() {
 
 		String elfTier = "";
-		int coinFlip = (int)(Math.random() * 3 + 1);
+		int coinFlip = new Random().nextInt(3) + 1;
+		// new java switch expression // java switch statement = case 1 : do-someting; break;
 		switch(coinFlip) {
-			case 1 -> elfTier = "Novice";
-			case 2 -> elfTier = "Apprentice";
-			case 3 -> elfTier = "Expert";
+			case 1 -> elfTier = tierT1;
+			case 2 -> elfTier = tierT2;
+			case 3 -> elfTier = tierT3;
+			default -> elfTier = tierT4;
 		}
 		return elfTier;
 	}
@@ -36,7 +40,7 @@ public class ElfUtil {
 
 		int trueLoaders = 0;
 		for (Elf elf : shift) {
-			if (elf.elfTier.equals("Apprentice") || elf.elfTier.equals("Expert")) {
+			if (elf.getElfTier().equals(tierT2) || elf.getElfTier().equals(tierT3)) {
 				trueLoaders++;
 			}
 		}
@@ -48,7 +52,7 @@ public class ElfUtil {
 
 		int trueLoaders = 0;
 		for (Elf elf : shift) {
-			if (elf.elfTier.equals("Apprentice") || elf.elfTier.equals("Expert")) {
+			if (elf.getElfTier().equals(tierT2) || elf.getElfTier().equals(tierT3)) {
 				trueLoaders++;
 			}
 		}
@@ -61,7 +65,4 @@ public class ElfUtil {
 		children.sort(Comparator.comparing(Child::getChildCity));
 	}
 
-	/*
-	 * sledge should be prepared here
-	 */
 }

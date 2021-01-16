@@ -2,11 +2,11 @@ package model;
 
 public class Child {
 
-	public int childID;
-	public String childName;
-	public int childAge;
-	public String childCity;
-	public String presentsName;
+	private final int childID;
+	private final String childName;
+	private final int childAge;
+	private final String childCity;
+	private final String presentsName;
 
 	public Child(int childID, String childName, int childAge, String childCity, String presentsName) {
 
@@ -18,16 +18,6 @@ public class Child {
 
 	}
 
-	public Child() {
-
-		this.childID = 9999;
-		this.childName = "Mickey Mouse";
-		this.childAge = 90;
-		this.childCity = "Disneyland";
-		this.presentsName = "Lollipop";
-
-	}
-
 	public void printChildAdded() {
 		System.out.println("******************************************************************");
 		System.out.println("** [system].added to santa's list: 								**");
@@ -35,6 +25,18 @@ public class Child {
 		System.out.println("** 																**");
 		System.out.println("** " + childID + " | " + childName + " | " + childAge + " | " + childCity + " | " + presentsName + " **");
 		System.out.println("** 																**");
+	}
+
+	public int getChildID() {
+		return childID;
+	}
+
+	public int getChildAge() {
+		return childAge;
+	}
+
+	public String getPresentsName() {
+		return presentsName;
 	}
 
 	public String getChildCity() {

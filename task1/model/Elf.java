@@ -4,26 +4,17 @@ import controller.ElfUtil;
 
 public class Elf extends ElfUtil {
 
-	public int elfID;
-	public String elfName;
-	public String elfTier;
-	public int elfAge;
-	public String elfCity;
+	private final int elfID;
+	private final String elfName;
+	private final String elfTier;
+	private final int elfAge;
+	private final String elfCity;
 
 	public Elf(int elfID, String elfName) {
 
 		this.elfID = elfID;
 		this.elfName = elfName + " Santa's Henchman";
 		this.elfTier = super.elfSetRandomTier();
-		this.elfAge = super.elfSetRandomAge();
-		this.elfCity = "Snowy White";
-
-	}
-
-	public Elf() {
-
-		this.elfName = "Dullnose Santa's Henchman";
-		this.elfTier = "Expert";
 		this.elfAge = super.elfSetRandomAge();
 		this.elfCity = "Snowy White";
 
@@ -38,4 +29,23 @@ public class Elf extends ElfUtil {
 		System.out.println("** 																**");
 	}
 
+	public int getElfID() {
+		return elfID;
+	}
+
+	public String getElfName() {
+		return elfName;
+	}
+
+	public String getElfTier() {
+		return elfTier;
+	}
+
+	public int getElfAge() {
+		return elfAge;
+	}
+
+	public String getElfCity() {
+		return elfCity;
+	}
 }
