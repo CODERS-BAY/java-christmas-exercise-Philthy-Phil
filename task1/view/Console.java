@@ -6,6 +6,7 @@ import model.Elf;
 import model.Presents;
 import model.Sledge;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,7 +38,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
-		// new java switch expression // java switch statement = case 1 : do-someting; break;
+		// new java switch expression // old = java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> dialogSanta();	// login as Santa
 			case "2" -> dialogElf(); 	// login as Elf
@@ -66,7 +67,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
-		// new java switch expression // java switch statement = case 1 : do-someting; break;
+		// new java switch expression // old = java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> {
 				dialogShowSantaVaultItems();
@@ -113,7 +114,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine();
-		// new java switch expression // java switch statement = case 1 : do-someting; break;
+		// new java switch expression // old = java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> {
 				System.out.println("******************************************************************");
@@ -229,7 +230,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 
 		String input = scanBot.nextLine().toLowerCase();
-		// new java switch expression // java switch statement = case 1 : do-someting; break;
+		// new java switch expression // old = java switch statement = case 1 : do-someting; break;
 		switch (input) {
 			case "1" -> {
 				System.out.println("******************************************************************");
@@ -472,7 +473,7 @@ public class Console extends ElfUtil {
 		System.out.println("******************************************************************");
 		String input = scanBot.nextLine().toLowerCase();
 		if(input.equals("x")) {
-			// new java switch expression // java switch statement = case 1 : do-someting; break;
+			// new java switch expression // old = java switch statement = case 1 : do-someting; break;
 			switch (usr) {
 				case "santa" -> dialogSanta();
 				case "elf" -> dialogElf();
@@ -495,5 +496,10 @@ public class Console extends ElfUtil {
 		System.out.println("** [system].input is incorrect! please try again!				**");
 		System.out.println("******************************************************************");
 	}
+
+	//console clear
+	// TODO emulating cls or clear console
+
+
 
 }
